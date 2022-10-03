@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from base.base_class import Base
 from selenium.webdriver.support import expected_conditions as EC
+from utilities.logger import Logger
 
 
 class Addresses_page(Base):
@@ -29,5 +30,8 @@ class Addresses_page(Base):
     """METHODS"""
 
     def confirm_address(self):
+        # with allure.step("sign_in"):
+        Logger.add_start_step(method="confirm_address")
         self.get_current_url()
         self.click_proceed_to_checkout_btn()
+        Logger.add_end_step(url=self.driver.current_url, method="confirm_address")
